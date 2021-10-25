@@ -1,0 +1,7 @@
+# <-this hash-character means this line is a comment
+# Special characters used in gitignore:
+#   * (matches 0 or more characters)
+#   ? (matches one character)
+#   [abc] (matches a, b or c)
+#   ** (matches nested directories)
+*.exe
