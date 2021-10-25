@@ -28,7 +28,7 @@ void writeFile(std::string fileName)
         std::cout << "Error: Unable to open the file." << std::endl;
     }
 
-    file << "Writing text to a file"; // We write "hey" to the file.
+    file << "Writing text to a file"; // We write to the file.
 
     file.close(); // closing the file
 }
