@@ -1,3 +1,21 @@
+/**
+*
+* Author: Gergely Bertalan
+*
+* This is a simple program for drawing a coloured 3d cube using openGL for 64bit systems.
+* GLSL error handling provided, along with simple openGL buffers.
+*
+* Used third-party libraries:
+* GLFW - API for openGL, provides windows, contexts and surfaces, handles inputs and events.
+* GLAD - openGL function loader. OpenGL functions must be loaded dynamically, at runtime. (GLAD is similar to GLEW - which is not used in this project)
+* GLM - OpenGL Mathematics library for vectors, matrices and more.
+*
+* Note: The .exe files will not be uploaded to github.
+* To generate .exe files compile and run the program as "debug" and "release".
+* You will find the generated .exe files in the /x64/Debug and /x64/Release folders.
+*
+**/
+
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
