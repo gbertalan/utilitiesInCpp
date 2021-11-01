@@ -1,0 +1,2 @@
+C:\Users\Garry Bertalan\Desktop\FONTOS\CppProgrammingProjects\PROGRAMMING\Project1\x64\Release\Project1.exe
+C:\Users\Garry Bertalan\Desktop\FONTOS\CppProgrammingProjects\UtilitiesInCPlusPlus\utilitiesInCpp\openGLCube\x64\Release\Project1.exe
