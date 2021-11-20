@@ -37,8 +37,13 @@ using namespace std;
 float cameraX, cameraY, cameraZ;
 float cubeLocX, cubeLocY, cubeLocZ;
 GLuint renderingProgram;
-GLuint vao[numVAOs];
-GLuint vbo[numVBOs];
+
+// VAO: stores the VBOs.
+// VBO: stores the data. It is like an array of numbers. 
+// These numbers could mean positions, colors, normals, etc.
+
+GLuint vao[numVAOs]; // this array holds the returned ID of the VAO created by glGenVertexArrays()
+GLuint vbo[numVBOs]; // this array holds the returned IDs of the VBOs created by glGenBuffers()
 
 // allocate variables used in display() function, so that they won’t need to be allocated during rendering
 GLuint mvLoc, projLoc;
@@ -61,11 +66,11 @@ void setupVertices(void) { // 36 vertices, 12 triangles, makes 2x2x2 cube placed
 -1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, 1.0f,
  1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, -1.0f
 	};
-	glGenVertexArrays(1, vao);
-	glBindVertexArray(vao[0]);
-	glGenBuffers(numVBOs, vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexPositions), vertexPositions, GL_STATIC_DRAW);
+	glGenVertexArrays(1, vao); // Create a VAO
+	glBindVertexArray(vao[0]); // Make the VAO "active"
+	glGenBuffers(numVBOs, vbo); // Create all the VBOs
+	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]); // Make the VBO with ID=0 "active"
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexPositions), vertexPositions, GL_STATIC_DRAW); // copy the array containing the vertices into the active buffer
 }
 
 string readShaderSource(const char* filePath) {
@@ -207,9 +212,9 @@ void display(GLFWwindow* window, double currentTime) {
 	glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mvMat));
 	glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(pMat));
 	// associate VBO with the corresponding vertex attribute in the vertex shader
-	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-	glEnableVertexAttribArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]); // make the 0th buffer "active"
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0); // associate 0th attribute with buffer
+	glEnableVertexAttribArray(0); // enable the 0th vertex attribute
 	// adjust OpenGL settings and draw model
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
